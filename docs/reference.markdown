@@ -4,7 +4,15 @@ subtitle: Recipe reference manual
 layout: main
 ---
 
-## Recipes format
+1. [Recipe format](#RecipesFormat)
+    1. [The header](#TheHeader) 
+    2. [The body](#TheBody)
+    3. [Defaults, common requirements for builds](#Defaults)
+2. [Relocation, building Vs running environment](#Relocation)
+3. [Known limitations](#Limitations)
+
+
+## Recipe format <a name="RecipesFormat"></a>
 
 The recipes are found in the a separate repository. The repository can be 
 specified via the `-c` option and defaults to _alidist_.
@@ -35,7 +43,7 @@ An example recipe for `zlib` is the following:
     make ${JOBS+-j $JOBS}
     make install
 
-### The header
+### The header <a name="TheHeader"></a>
 
 The following entries are mandatory in the header:
 
@@ -125,7 +133,7 @@ The following entries are optional in the header:
     relocation of executables and dynamic libraries **on macOS only**. If not
     specified, defaults to `bin`, `lib` and `lib64`.
 
-### The body
+### The body <a name="TheBody"></a>
 
 This is the build script executed to effectively build and install your
 software. Being a shell script you can be as flexible as you want in its
@@ -173,12 +181,12 @@ uppercased):
  - `<PACKAGE>_REVISION`: package build number.
  - `<PACKAGE>_HASH`: hash of the recipe used to build the package.
 
-### Defaults
+### Defaults, common requirements for build <a name="Defaults"></a>
 
 aliBuild uses a special file, called `defaults-release.sh` which will be
 included as a build requires of any recipe. This is in general handy to
 specify common options like `CXXFLAGS` or dependencies. It's up to the
-recipe handle correctly the presence of these options.
+recipe to handle correctly the presence of these options.
 
 It is also possible to specify on the command line a different set of
 defaults, for example if you want to include code coverage. This is
@@ -233,3 +241,10 @@ For a more complete example see
 
 You can limit which defaults can be applied to a given package by using the
 `valid_defaults` key.
+
+
+
+## Relocation, building Vs running environment <a name="Relocation"></a>
+
+
+## Known limitations <a name="Limitations"></a>
